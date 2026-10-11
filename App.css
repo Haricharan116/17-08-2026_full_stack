@@ -1,0 +1,77 @@
+/* Center everything on the screen */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #1a1a1a;
+  color: white;
+  font-family: sans-serif;
+}
+
+.title {
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+/* Flexbox grid for images */
+.image-grid {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* Crucial for 3D depth perception */
+  perspective: 1000px; 
+}
+
+/* The 3D Card Container */
+.card {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+/* Image styles */
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* 3D Hover effect */
+.card:hover {
+  /* Tilts the card slightly upward and rotates it */
+  transform: translateY(-10px) rotateX(15px) rotateY(-15px);
+  box-shadow: -15px 25px 50px rgba(0, 0, 0, 0.7);
+}
+
+/* Zoom effect on the image inside the card */
+.card:hover img {
+  transform: scale(1.1);
+}
+
+/* 3D Text Overlay */
+.layer {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-shadow: 0 2px 5px rgba(199, 209, 97, 0.5);
+  transition: transform 0.5s ease;
+  /* Pushes text forward in 3D space */
+  transform: translateZ(50px); 
+}
+
+.card:hover .layer {
+  transform: translateZ(80px) translateY(-10px);
+}
